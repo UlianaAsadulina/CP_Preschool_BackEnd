@@ -1,45 +1,65 @@
 import mongoose from 'mongoose';
 
+function validateEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email)
+};
+
 const childSchema = new mongoose.Schema({
     childName: {
         type: String,
-        required: true },
+        required: [true, "Name required"] },
     childDOB: {
         type: Date,
-        required: true },
+        required: [true, "Date of birth required"] },
     parentName: {
         type: String,
-        required: true },
+        required: [true, "Name required"] },
     parentPhone: {
         type: Number,
-        required: true },
+        required: [true, "Phone number required"] },
     parentEmail: {
         type: String,
-        required: true },
+        required: [true, "Email required"],
+    },
 });
 
 const teacherSchema = new mongoose.Schema( {
     teacherFirstName: {
         type: String,
-        required: true },
+        required: [true, "Name required"] },
     teacherLastName: {
         type: String,
-        required: true },
+        required: [true, "Last name required"] },
     teacherRole: {
         type: String,
+        enum: [ "Lead", "Aid"],
+        default: "Lead",
         required: true },
-    teacherInfo: {
-        type: String,
-        required: true },
+    teacherInfo: {type: String,},
 })
 
 const GroupSchema = new mongoose.Schema({
     group: {
-        type: String,
-        required: true }, 
+        type: String,        
+        enum: [
+            "Infants (6wks-12months)",
+            "Infants (12wks-18months)",
+            "Toddlers (18m-30m)",
+            "Toddlers (30m-3yrs)",
+            "Preschool (3yrs-4yrs)",
+            "Preschool (4yrs-5yrs)",
+        ],
+        default: "Preschool (4yrs-5yrs)",
+        message: "${VALUE} is not valid group/age name",
+        required: true,
+    }, 
     kidsInGroup: {
         type: Number,
-        required: true },
+        enum: [10, 12, 14, 16, 24, 28],
+        default: 28,
+        required: true,
+        message: "Value must corresponds Section 5104.033 | Staff to child ratios" },
     teachers: [ teacherSchema ],
     morning: [childSchema],
     afternoon: [childSchema],
