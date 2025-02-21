@@ -30,4 +30,21 @@ router.post("/", async (req, res) => {
 });
 
 
+
+
+
+// Delete whole group
+router.delete('/:id', async (req, res) => {
+    try {
+        console.log("route  /groups/delete");
+        await Group.findByIdAndDelete(req.params.id);
+
+        res.json({ msg: 'Group Deleted' });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ msg: 'Server Error' });
+    }
+});
+
+
 export default router;
