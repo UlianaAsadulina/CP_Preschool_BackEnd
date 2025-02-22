@@ -29,7 +29,20 @@ router.post("/", async (req, res) => {
     }
 });
 
+// Update whole group 
+router.put('/:id', async (req, res) => {
+    try {
+        console.log("route  /groups/put");
+        let updatedGroup = await Group.findByIdAndUpdate(req.params.id, req.body, {
+            new: true,
+        });
 
+        res.json(updatedGroup);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ msg: 'Server Error' });
+    }
+});
 
 
 
