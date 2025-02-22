@@ -12,12 +12,24 @@ const childSchema = new mongoose.Schema({
     childDOB: {
         type: Date,
         required: [true, "Date of birth required"] },
+    attendTime: {
+        type: String,
+        enum: [
+            "full",
+            "morning",
+            "afternoon"
+        ],
+        default: "full",
+        required: [ true, "Attend morning, afternoon or full"]
+    },    
     parentName: {
         type: String,
         required: [true, "Name required"] },
     parentPhone: {
         type: Number,
-        required: [true, "Phone number required"] },
+        required: [true, "Phone number required"], 
+        min: 1000000000,
+        max: 9999999999},
     parentEmail: {
         type: String,
         required: [true, "Email required"],
@@ -61,9 +73,8 @@ const GroupSchema = new mongoose.Schema({
         required: true,
         message: "Value must corresponds Section 5104.033 | Staff to child ratios" },
     teachers: [ teacherSchema ],
-    morning: [childSchema],
-    afternoon: [childSchema],
-    full: [childSchema],
+    kids: [childSchema],
+  
 });
 
 const Group = mongoose.model('Group', GroupSchema);
