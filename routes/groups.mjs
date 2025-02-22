@@ -78,6 +78,37 @@ router.patch('/:id/teachers', async (req, res) => {
     }
 });
 
+//Update child information
+router.patch('/:id/kids/:kidId', async (req, res) => {
+    try {
+        console.log("route /groups/:id/kids/:kidId (update)");
+
+        // Find the group and check if the child exists
+        const group = await Group.findById(req.params.id);
+        if (!group) {
+            return res.status(404).json({ msg: "Group not found" });
+        }
+
+        const child = group.kids.id(req.params.kidId);
+        if (!child) {
+            return res.status(404).json({ msg: "Child not found" });
+        }
+
+        // Update the child information
+        const updatedGroup = await Group.findOneAndUpdate(
+            { _id: req.params.id, "kids._id": req.params.kidId },
+            { $set: { "kids.$": req.body } },
+            { new: true, runValidators: true }
+        );
+
+        res.json(updatedGroup);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ msg: 'Server Error' });
+    }
+});
+
+
 // Add new child to array of kids inside the Group
 router.patch('/:id/kids', async (req, res) => {
     try {
@@ -114,6 +145,23 @@ router.patch('/:id/teachers/:teacherId', async (req, res) => {
     }
 });
 
+//Remove child
+router.patch('/:id/kids/:kidId', async (req, res) => {
+    try {
+        console.log("route /groups/:id/kids/:kidId (delete)");
+
+        const updatedGroup = await Group.findByIdAndUpdate(
+            req.params.id,
+            { $pull: { kids: { _id: req.params.kidId } } },
+            { new: true }
+        );
+
+        res.json(updatedGroup);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ msg: 'Server Error' });
+    }
+});
 
 
 export default router;
