@@ -34,7 +34,7 @@ router.put('/:id', async (req, res) => {
     try {
         console.log("route  /groups/put");
         let updatedGroup = await Group.findByIdAndUpdate(req.params.id, req.body, {
-            new: true,
+            new: true, runValidators: true
         });
 
         res.json(updatedGroup);
@@ -69,6 +69,24 @@ router.patch('/:id/teachers', async (req, res) => {
             req.params.id,
             { $push: { teachers: req.body } }, 
             { new: true, runValidators: true }
+        );
+
+        res.json(updatedGroup);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ msg: 'Server Error' });
+    }
+});
+
+//Remove teacher
+router.patch('/:id/teachers/:teacherId', async (req, res) => {
+    try {
+        console.log("route /groups/:id/teachers/:teacherId (delete)");
+
+        const updatedGroup = await Group.findByIdAndUpdate(
+            req.params.id,
+            { $pull: { teachers: { _id: req.params.teacherId } } },
+            { new: true }
         );
 
         res.json(updatedGroup);
