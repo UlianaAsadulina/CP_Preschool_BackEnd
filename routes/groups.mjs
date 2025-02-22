@@ -78,6 +78,24 @@ router.patch('/:id/teachers', async (req, res) => {
     }
 });
 
+// Add new child to array of kids inside the Group
+router.patch('/:id/kids', async (req, res) => {
+    try {
+        console.log("route /groups/:id/kids (addNew)");
+
+        const updatedGroup = await Group.findByIdAndUpdate(
+            req.params.id,
+            { $push: { kids: req.body } }, 
+            { new: true, runValidators: true }
+        );
+
+        res.json(updatedGroup);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ msg: 'Server Error' });
+    }
+});
+
 //Remove teacher
 router.patch('/:id/teachers/:teacherId', async (req, res) => {
     try {

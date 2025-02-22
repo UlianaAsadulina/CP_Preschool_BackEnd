@@ -14,11 +14,7 @@ const childSchema = new mongoose.Schema({
         required: [true, "Date of birth required"] },
     attendTime: {
         type: String,
-        enum: [
-            "full",
-            "morning",
-            "afternoon"
-        ],
+        enum: [ "full", "morning", "afternoon" ],
         default: "full",
         required: [ true, "Attend morning, afternoon or full"]
     },    
