@@ -60,4 +60,24 @@ router.delete('/:id', async (req, res) => {
 });
 
 
+// Add new teacher to array of teachers inside the Group
+router.patch('/:id/teachers', async (req, res) => {
+    try {
+        console.log("route /groups/:id/teachers (addNew)");
+
+        const updatedGroup = await Group.findByIdAndUpdate(
+            req.params.id,
+            { $push: { teachers: req.body } }, 
+            { new: true, runValidators: true }
+        );
+
+        res.json(updatedGroup);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ msg: 'Server Error' });
+    }
+});
+
+
+
 export default router;
