@@ -14,8 +14,9 @@ const PORT = process.env.PORT || 3030;
 connectDB();
 
 //---MIDDLEWARE----
-app.use(express.json());
 app.use(cors());
+app.use(express.json());
+
 
 
 

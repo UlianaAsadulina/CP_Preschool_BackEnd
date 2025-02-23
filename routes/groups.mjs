@@ -3,17 +3,7 @@ import Group from "../models/Group.mjs";
 
 const router = express.Router();
 
-// Read information about all groups
-router.get("/", async (req, res) => {
-    try {
-        console.log("route /groups/getAll");
-        let allGroups = await Group.find({});
-        res.json(allGroups);
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({ msg: "Server Error" });
-    }
-});
+
 
 // Create new group
 router.post("/", async (req, res) => {
@@ -61,7 +51,7 @@ router.delete('/:id', async (req, res) => {
 
 
 // Add new teacher to array of teachers inside the Group
-router.patch('/:id/teachers', async (req, res) => {
+router.post('/:id/teachers', async (req, res) => {
     try {
         console.log("route /groups/:id/teachers (addNew)");
 
@@ -108,9 +98,38 @@ router.patch('/:id/kids/:kidId', async (req, res) => {
     }
 });
 
+//Remove child
+router.delete('/:id/kids/:kidId', async (req, res) => {
+    try {
+        console.log("route /groups/:id/kids/:kidId (delete)");
+        // const { id, kidId } = req.params;
+
+        // // Find the group with id from params
+        // const group = await Group.findById(id);
+        // if (!group) {
+        //     res.status(404).json({ msg: "Group not found" });
+        // }
+        // //Find the child with kidId from group
+        // const child = group.kids._id(kidId);
+        // if (!child) {
+        //     res.status(404).json({ msg: "Child not found" });
+        // }
+
+        const updatedGroup = await Group.findByIdAndUpdate(
+            req.params.id,
+            { $pull: { kids: { _id: req.params.kidId } } },
+            { new: true }
+        );
+        res.json(updatedGroup);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ msg: 'Server Error' });
+    }
+});
+
 
 // Add new child to array of kids inside the Group
-router.patch('/:id/kids', async (req, res) => {
+router.post('/:id/kids', async (req, res) => {
     try {
         console.log("route /groups/:id/kids (addNew)");
 
@@ -128,7 +147,7 @@ router.patch('/:id/kids', async (req, res) => {
 });
 
 //Remove teacher
-router.patch('/:id/teachers/:teacherId', async (req, res) => {
+router.delete('/:id/teachers/:teacherId', async (req, res) => {
     try {
         console.log("route /groups/:id/teachers/:teacherId (delete)");
 
@@ -145,21 +164,15 @@ router.patch('/:id/teachers/:teacherId', async (req, res) => {
     }
 });
 
-//Remove child
-router.patch('/:id/kids/:kidId', async (req, res) => {
+// Read information about all groups
+router.get("/", async (req, res) => {
     try {
-        console.log("route /groups/:id/kids/:kidId (delete)");
-
-        const updatedGroup = await Group.findByIdAndUpdate(
-            req.params.id,
-            { $pull: { kids: { _id: req.params.kidId } } },
-            { new: true }
-        );
-
-        res.json(updatedGroup);
+        console.log("route   /groups/getAll");
+        let allGroups = await Group.find({});
+        res.json(allGroups);
     } catch (err) {
         console.error(err);
-        res.status(500).json({ msg: 'Server Error' });
+        res.status(500).json({ msg: "Server Error" });
     }
 });
 
