@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from 'dotenv';
 import connectDB from './config/db.mjs';
+import cors from 'cors'
 
 //import routes
 import groupsRouter from './routes/groups.mjs';
@@ -14,6 +15,8 @@ connectDB();
 
 //---MIDDLEWARE----
 app.use(express.json());
+app.use(cors());
+
 
 
 //----ROUTES----
