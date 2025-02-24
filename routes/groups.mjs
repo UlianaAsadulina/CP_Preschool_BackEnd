@@ -67,24 +67,31 @@ router.post('/:id/teachers', async (req, res) => {
         res.status(500).json({ msg: 'Server Error' });
     }
 });
+//Update teacher information
+router.patch('/:id/teachers/:teacherId', async (req, res) => {
+    try {
+        console.log("route /groups/:id/teachers/:teacherId (update)");
+
+        // Update the child information
+        const updatedGroup = await Group.findOneAndUpdate(
+            { _id: req.params.id, "teachers._id": req.params.teacherId },
+            { $set: { "teachers.$": req.body } },
+            { new: true, runValidators: true }
+        );
+
+        res.json(updatedGroup);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ msg: 'Server Error' });
+    }
+});
 
 //Update child information
 router.patch('/:id/kids/:kidId', async (req, res) => {
     try {
         console.log("route /groups/:id/kids/:kidId (update)");
 
-        // Find the group and check if the child exists
-        const group = await Group.findById(req.params.id);
-        if (!group) {
-            return res.status(404).json({ msg: "Group not found" });
-        }
 
-        const child = group.kids.id(req.params.kidId);
-        if (!child) {
-            return res.status(404).json({ msg: "Child not found" });
-        }
-
-        // Update the child information
         const updatedGroup = await Group.findOneAndUpdate(
             { _id: req.params.id, "kids._id": req.params.kidId },
             { $set: { "kids.$": req.body } },
@@ -102,18 +109,6 @@ router.patch('/:id/kids/:kidId', async (req, res) => {
 router.delete('/:id/kids/:kidId', async (req, res) => {
     try {
         console.log("route /groups/:id/kids/:kidId (delete)");
-        // const { id, kidId } = req.params;
-
-        // // Find the group with id from params
-        // const group = await Group.findById(id);
-        // if (!group) {
-        //     res.status(404).json({ msg: "Group not found" });
-        // }
-        // //Find the child with kidId from group
-        // const child = group.kids._id(kidId);
-        // if (!child) {
-        //     res.status(404).json({ msg: "Child not found" });
-        // }
 
         const updatedGroup = await Group.findByIdAndUpdate(
             req.params.id,
