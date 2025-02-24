@@ -159,6 +159,18 @@ router.delete('/:id/teachers/:teacherId', async (req, res) => {
     }
 });
 
+// Read information about one group with id
+router.get("/:id", async (req, res) => {
+    try {
+        console.log("route   /groups/getOne");
+        let oneGroup = await Group.find({_id: req.params.id});
+        res.json(oneGroup);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ msg: "Server Error" });
+    }
+});
+
 // Read information about all groups
 router.get("/", async (req, res) => {
     try {
