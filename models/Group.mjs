@@ -32,7 +32,7 @@ const childSchema = new mongoose.Schema({
     },
 });
 
-childName.index({ childName: 1} );
+childSchema.index({ childName: 1} );
 
 const teacherSchema = new mongoose.Schema( {
     teacherFirstName: {
@@ -73,6 +73,7 @@ const GroupSchema = new mongoose.Schema({
         default: 28,
         required: true,
         message: "Value must corresponds Section 5104.033 | Staff to child ratios" },
+    partTime: { type: Number, default: 5},
     teachers: [ teacherSchema ],
     kids: [childSchema],
   
