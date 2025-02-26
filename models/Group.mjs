@@ -32,6 +32,8 @@ const childSchema = new mongoose.Schema({
     },
 });
 
+childName.index({ childName: 1} );
+
 const teacherSchema = new mongoose.Schema( {
     teacherFirstName: {
         type: String,
@@ -46,6 +48,9 @@ const teacherSchema = new mongoose.Schema( {
         required: true },
     teacherInfo: {type: String,},
 })
+
+teacherSchema.index({ teacherFirstName: 1, teacherLastName: 1 }); // schema level
+
 
 const GroupSchema = new mongoose.Schema({
     group: {
@@ -72,6 +77,8 @@ const GroupSchema = new mongoose.Schema({
     kids: [childSchema],
   
 });
+
+GroupSchema.index({ group: 1 }); 
 
 const Group = mongoose.model('Group', GroupSchema);
 
