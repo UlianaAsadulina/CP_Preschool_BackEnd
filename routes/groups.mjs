@@ -175,7 +175,7 @@ router.get("/:id", async (req, res) => {
 router.get("/", async (req, res) => {
     try {
         console.log("route   /groups/getAll");
-        let allGroups = await Group.find({});
+        let allGroups = await Group.find({}).sort({ "group": 1 });
         res.json(allGroups);
     } catch (err) {
         console.error(err);
