@@ -2,7 +2,7 @@
 
 #### INSERT 1 SENTANCE SUMMARY OF YOUR APPLICATION/GAME HERE
 Dinamicaly updated information about availability in preschool
-<img src="https://asset.cloudinary.com/dvovcl4gr/493634ba7fa32722f6015206e9878057" alt="Landing page Screenshot"/>
+<img src="https://drive.google.com/file/d/10D6ckn74RrUKCauZ775_pd69fnmZyQ1-/view?usp=sharing" alt="Landing page Screenshot"/>
 
 
 
@@ -14,7 +14,7 @@ Web page for local preschool who has only one location. The goal is give adminis
 * [Features](#features)
 * [Design](#design)
 * [Project Next Steps](#nextsteps)
-* [Deployed App](#deployment)
+* [Repository Links](#github)
 * [About the Author](#author)
 
 ## <a name="technologiesused"></a>Technologies Used
@@ -34,15 +34,15 @@ Web page for local preschool who has only one location. The goal is give adminis
 ## Wireframe Images
 * Description of image location, or <img src="https://docs.google.com/document/d/1kbedccvbZwlwuXe_tH8uNWrUzCkxAiKEJmzomoB5_oA/edit?usp=sharing">
 
-## Trello Planning
-* Link to trello or planning board - ex: https://trello.com/b/2jeHdFcV/project-1-connect-4
 
 ## <a name="design"></a>Design
-* For color palet for design <img src="https://asset.cloudinary.com/dvovcl4gr/a4842fd940dd6c36210a287ba1ef46f8">
+* For color palet for design <img src="https://drive.google.com/file/d/1tKhXCmaGvfHZpA8dOJ_Ehay65iWUpTCo/view?usp=sharing">
 Ex: Design elements implemented using HTML5 and CSS3. 
 
+
 ## ERD Images & DB Structure
-* Embeded ERD Images <img src="https://asset.cloudinary.com/dvovcl4gr/b2344dc21d5a3dd1d0f994b2a11e922e">
+* Embeded ERD Images <img src="https://drive.google.com/file/d/1K3gJcpKOJwzcNBY3uAg1EY9VZkzSmAwn/view?usp=sharing">
+
 
 ## <a name="nextsteps"></a>Project Next Steps
 #### List of Future Features
@@ -52,13 +52,16 @@ Ex: Design elements implemented using HTML5 and CSS3.
 * Allow admin edit main carousel
 * Edit carousel and allow to use not only pictures but also event bunners with button, lead to submit partisipation
  
-## <a name="deployment"></a>Deployed Link
-[Netlify]()
+## <a name="github"></a>Repository Links
+
 
 * You can view the repository:
-[Github.com] frontend (https://github.com/UlianaAsadulina/CP_Preschool_FrontEnd)   
+[Github.com] frontend  (https://github.com/UlianaAsadulina/CP_Preschool_FrontEnd)
+[Github.com] backend  (https://github.com/UlianaAsadulina/CP_Preschool_BackEnd)
+              
 * If unable to view please go live locally through VS Code
 
 ## <a name="author"></a>About The Author
 I build applications and mini projects tied to my various interests. I look for creative solutions to real world problems and think of technical ways to address them. While no application is ever perfect I find joy in the process and all my final products!
+
 [Developer LinkedIn](https://www.linkedin.com/in/uasadulina/)
