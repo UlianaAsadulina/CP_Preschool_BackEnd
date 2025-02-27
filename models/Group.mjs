@@ -68,9 +68,8 @@ const GroupSchema = new mongoose.Schema({
         required: true,
     }, 
     kidsInGroup: {
-        type: Number,
-        enum: [10, 12, 14, 16, 24, 28],
-        default: 28,
+        type: Number,        
+        default: 24,
         required: true,
         message: "Value must corresponds Section 5104.033 | Staff to child ratios" },
     partTime: { type: Number, default: 5},
