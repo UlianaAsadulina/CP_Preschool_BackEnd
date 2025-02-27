@@ -2,7 +2,8 @@
 
 #### INSERT 1 SENTANCE SUMMARY OF YOUR APPLICATION/GAME HERE
 Dinamicaly updated information about availability in preschool
-<img src="https://drive.google.com/file/d/10D6ckn74RrUKCauZ775_pd69fnmZyQ1-/view?usp=sharing" alt="Landing page Screenshot"/>
+
+(https://drive.google.com/file/d/10D6ckn74RrUKCauZ775_pd69fnmZyQ1-/view?usp=sharing/)
 
 
 
@@ -31,17 +32,17 @@ Web page for local preschool who has only one location. The goal is give adminis
 * An administrator can manage groups by creating and editing lists of teachers and students for each class. 
 
 
-## Wireframe Images
-* Description of image location, or <img src="https://docs.google.com/document/d/1kbedccvbZwlwuXe_tH8uNWrUzCkxAiKEJmzomoB5_oA/edit?usp=sharing">
+## Wireframe
+*  (https://docs.google.com/document/d/1kbedccvbZwlwuXe_tH8uNWrUzCkxAiKEJmzomoB5_oA/edit?usp=sharing)
 
 
 ## <a name="design"></a>Design
-* For color palet for design <img src="https://drive.google.com/file/d/1tKhXCmaGvfHZpA8dOJ_Ehay65iWUpTCo/view?usp=sharing">
+* For color palet for design i used this pallete (https://drive.google.com/file/d/1tKhXCmaGvfHZpA8dOJ_Ehay65iWUpTCo/view?usp=sharing)
 Ex: Design elements implemented using HTML5 and CSS3. 
 
 
 ## ERD Images & DB Structure
-* Embeded ERD Images <img src="https://drive.google.com/file/d/1K3gJcpKOJwzcNBY3uAg1EY9VZkzSmAwn/view?usp=sharing">
+* Embeded ERD Images  (https://drive.google.com/file/d/1K3gJcpKOJwzcNBY3uAg1EY9VZkzSmAwn/view?usp=sharing)
 
 
 ## <a name="nextsteps"></a>Project Next Steps
