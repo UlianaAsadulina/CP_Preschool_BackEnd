@@ -1,4 +1,4 @@
-# PRESCOOL WEBSITE
+# PRESCHOOL WEBSITE
 
 #### INSERT 1 SENTANCE SUMMARY OF YOUR APPLICATION/GAME HERE
 Dinamicaly updated information about availability in preschool
