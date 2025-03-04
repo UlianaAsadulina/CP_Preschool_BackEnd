@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "server.mjs",
   "scripts": {
-    "start": "nodemon server.mjs",
+    "start": "node server.mjs",
+    "server": "nodemon server.mjs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Uliana Asadulina",
