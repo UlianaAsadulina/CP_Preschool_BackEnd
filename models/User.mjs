@@ -1,39 +1,21 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
-const userSchema = new mongoose.Schema({
+const UserSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true,
+    },
     email: {
         type: String,
-        required: [true, "Email required"],
+        required: true,
+        unique: true,
     },
     password: {
         type: String,
-        required: [true, "Password required"] },
-    FirstName: {
-        type: String,
-        required: [true, "First name required"]
+        required: true,
     },
-    LastName: {
-        type: String,
-        required: [true, "Last name required"]
-    },
-    userDOB: {
-        type: Date,
-        required: false },
-    role: {
-        type: String,
-        enum: [ "user", "admin", "parent" ],
-        default: "user",
-        required: [ true, "Role required"],
-    },      
-    phone: {
-        type: Number,
-        required: false, 
-        min: 1000000000,
-        max: 9999999999
-    },
-    
 });
 
-const User = mongoose.model('User', userSchemaSchema);
+const User = mongoose.model("user", UserSchema);
 
 export default User;

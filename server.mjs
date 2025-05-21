@@ -2,9 +2,11 @@ import express from "express";
 import dotenv from 'dotenv';
 import connectDB from './config/db.mjs';
 import cors from 'cors'
+import cookieParser from "cookie-parser";
 
 //import routes
 import groupsRouter from './routes/groups.mjs';
+import usersRouter from './routes/users.mjs';
 
 
 //-----SETUP----
@@ -16,12 +18,14 @@ connectDB();
 //---MIDDLEWARE----
 app.use(cors());
 app.use(express.json());
+app.use(cookieParser());
 
 
 
 
 //----ROUTES----
 app.use("/groups", groupsRouter);
+app.use("/users", usersRouter);
 
 app.use("/", (req,res) => {
     res.send("Landing page");
