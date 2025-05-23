@@ -1,18 +1,18 @@
 import express from 'express';
-import User from '../../models/User.mjs';
-import auth from '../../middleware/auth.mjs';
+import User from '../models/User.mjs';
+import auth from '../middleware/auth.mjs';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { check, validationResult } from 'express-validator';
 
 const router = express.Router();
 
-// @route:   GET api/auth
+// @route:   GET /auth
 // @desc:    Test route
 // @access:  Public
 // router.get('/', (req, res) => res.send('Auth Route'));
 
-// @route:   GET api/auth
+// @route:   GET /auth
 // @desc:    Auth route
 // @access:  Private
 router.get('/', auth, async (req, res) => {
@@ -28,7 +28,7 @@ router.get('/', auth, async (req, res) => {
     }
 });
 
-// @route:   POST api/auth
+// @route:   POST /auth
 // @desc:    Login and Authenticate User
 // @access:  Public
 router.post(

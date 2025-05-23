@@ -2,16 +2,16 @@ import express from 'express';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { check, validationResult } from 'express-validator';
-import User from '../../models/User.mjs';
+import User from '../models/User.mjs';
 
 const router = express.Router();
 
-// @route:   GET api/users
+// @route:   GET /users
 // @desc:    Test route
 // @access:  Public
-// router.get('/', (req, res) => res.send('User Route'));
+router.get('/', (req, res) => res.send('User Route'));
 
-// @route:   POST api/users
+// @route:   POST /users
 // @desc:    Create/Registering User
 // @access:  Public
 router.post(

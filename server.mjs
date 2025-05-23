@@ -7,6 +7,7 @@ import cookieParser from "cookie-parser";
 //import routes
 import groupsRouter from './routes/groups.mjs';
 import usersRouter from './routes/users.mjs';
+import authRouter from './routes/auth.mjs';
 
 
 //-----SETUP----
@@ -17,7 +18,7 @@ connectDB();
 
 //---MIDDLEWARE----
 app.use(cors());
-app.use(express.json());
+app.use(express.json({ extended: false }));
 app.use(cookieParser());
 
 
@@ -26,6 +27,7 @@ app.use(cookieParser());
 //----ROUTES----
 app.use("/groups", groupsRouter);
 app.use("/users", usersRouter);
+app.use("/auth", authRouter);
 
 app.use("/", (req,res) => {
     res.send("Landing page");
