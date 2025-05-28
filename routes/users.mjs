@@ -67,7 +67,7 @@ router.post('/',
            // iF NO ERRORS - Send the token to the front end
             jwt.sign(
                 payload,
-                process.env.JWT_SECRET,
+                process.env.jwtSecret,
                 { expiresIn: 3600 }, // 1 hour expiration time
                 // Callback function to handle the result of the sign operation
                 (err, token) => {
